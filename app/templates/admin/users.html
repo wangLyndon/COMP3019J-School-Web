@@ -1,0 +1,47 @@
+{% extends "main/base.html" %}
+{% block title %}
+    Users
+{% endblock %}
+
+{% block content %}
+    {% if users %}
+        <h2 class="pageTitle">Users: </h2>
+        <ul class="pageList">
+            {% for user in users %}
+                <li class="adminView">
+                    <div class="viewTitle">
+                        <div class="userInfo">
+                            Username: <span class="name">{{ user.username }}</span>
+                            Role: <span class="name">{{ user.role }}</span>
+                        </div>
+                    </div>
+                    <div class="viewEdit">
+                        <a href="{{ url_for("admin.editUser", userId=user.id) }}">Edit</a>
+                    </div>
+                    <div class="viewDel">
+                            <div class="user" data-id="{{ user.id }}">
+                            {% if user.ban != "Ban" %}
+                                Ban
+                                {% else %}
+                                unBan
+                                {% endif %}
+                            </div>
+                    </div>
+                </li>
+            {% endfor %}
+
+        </ul>
+    {% endif %}
+
+    <div class="page">
+
+        {% if currentPageUser.has_prev %}
+            <a href="{{ url_for("admin.users", page=currentPageUser.prev_num) }}" class="prev">Prev</a>
+        {% endif %}
+        <span>Current page: {{ currentPageUser.page }}</span>
+        {% if currentPageUser.has_next %}
+            <a href="{{ url_for("admin.users", page=currentPageUser.next_num) }}" class="next">Next</a>
+        {% endif %}
+
+    </div>
+{% endblock %}

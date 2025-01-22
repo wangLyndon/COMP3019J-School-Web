@@ -1,0 +1,30 @@
+{
+  "id": "4742192",
+  "name": "COMP3919JWeb",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "9654024",
+      "name": "robot",
+      "font_class": "robot",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "12005061",
+      "name": "Send",
+      "font_class": "Send",
+      "unicode": "eab7",
+      "unicode_decimal": 60087
+    },
+    {
+      "icon_id": "1911719",
+      "name": "SUN",
+      "font_class": "SUN",
+      "unicode": "e719",
+      "unicode_decimal": 59161
+    }
+  ]
+}

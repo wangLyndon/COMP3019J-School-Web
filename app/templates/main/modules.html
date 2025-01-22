@@ -1,0 +1,40 @@
+{% extends "main/base.html" %}
+{% block title %}
+    Modules
+{% endblock %}
+
+{% block content %}
+    <h2 class="pageTitle">Modules: </h2>
+
+    <hr>
+
+    <ul class="pageItem">
+        {% for module in modules %}
+            <li>
+                <a href="{{ url_for("main.module", moduleId=module.id) }}">
+                    <div class="cardWithImg">
+                        <div class="moduleWithImg">
+                            <img src="../../static/images/moduleImg.jpg" alt="">
+                            <div class="moduleName">
+                                {{ module.moduleName }}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="page">
+
+        {#  Paging   #}
+
+        {% if currentPageModules.has_prev %}
+            <a href="{{ url_for("main.modules", page=currentPageModules.prev_num) }}" class="prev">Prev</a>
+        {% endif %}
+        <span>Current page: {{ currentPageModules.page }}</span>
+        {% if currentPageModules.has_next %}
+            <a href="{{ url_for("main.modules", page=currentPageModules.next_num) }}" class="next">Next</a>
+        {% endif %}
+    </div>
+{% endblock %}

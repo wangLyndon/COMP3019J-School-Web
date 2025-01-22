@@ -1,0 +1,30 @@
+{% extends "main/base.html" %}
+{% block title %}
+    Menu Log
+{% endblock %}
+
+{% block content %}
+    <h2 class="pageTitle">Log: </h2>
+    <ul class="pageList">
+
+        {% for item in lst %}
+            <li>
+                {{ item }}
+            </li>
+        {% endfor %}
+
+
+    </ul>
+    <div class="page">
+
+        {% if currentPage != 1 %}
+            <a href="{{ url_for("admin.menuLog", page=currentPage - 1) }}" class="prev">Prev</a>
+        {% endif %}
+        <span>Current page: {{ currentPage }}</span>
+        {% if currentPage != totalPage %}
+            <a href="{{ url_for("admin.menuLog", page=currentPage + 1) }}" class="next">Prev</a>
+        {% endif %}
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "main/base.html" %}
+{% block title %}
+    Edit Menu
+{% endblock %}
+
+{% block content %}
+    <h2 class="formTitle">Edit Menu</h2>
+    <form method="post">
+
+        {{ form.hidden_tag() }}
+
+        <p class="form">
+            {{ form.date.label }} :
+            {{ form.date(id = "menuDate") }} <br>
+            <span class="errorMsg"></span>
+        </p>
+
+        <p class="form">
+            {{ form.breakfast.label }} :
+            {{ form.breakfast }} <br>
+            <span class="errorMsg"></span>
+        </p>
+
+        <p class="form">
+            {{ form.lunch.label }} :
+            {{ form.lunch }} <br>
+            <span class="errorMsg"></span>
+        </p>
+
+        <p class="form">
+            {{ form.dinner.label }} :
+            {{ form.dinner }} <br>
+            <span class="errorMsg"></span>
+        </p>
+
+        <p class="formSubmit">
+            {{ form.submit }}
+        </p>
+
+    </form>
+{% endblock %}

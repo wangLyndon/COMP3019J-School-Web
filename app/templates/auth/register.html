@@ -1,0 +1,58 @@
+{% extends "main/base.html" %}
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %}
+    <h2 class="formTitle">Register</h2>
+    <form method="post" id="regSubmit">
+
+        {{ form.hidden_tag() }}
+
+        <p class="form">
+            {{ form.username.label }} :
+            {{ form.username }} <br>
+            <span class="errorMsg"></span>
+        </p>
+
+        <p class="form">
+            {{ form.password.label }} :
+            {{ form.password(id = "regPassword") }} <br>
+            <span class="errorMsg"></span>
+        </p>
+
+        <p class="form">
+            {{ form.passwordAgain.label }} :
+            {{ form.passwordAgain(id = "regPasswordAgain") }} <br>
+            <span class="errorMsg" id="regErrorPasswordAgain"></span>
+        </p>
+
+        <p class="form">
+            {{ form.email.label }} :
+            {{ form.email(id = "regEmail") }}<br>
+            <span class="errorMsg" id="errorRegEmail"></span>
+        </p>
+
+        <p class="form">
+            {{ form.phoneNumber.label }} :
+            {{ form.phoneNumber(id = "regPhone") }} <br>
+            <span class="errorMsg" id="errorRegPhone"></span>
+        </p>
+
+        <p class="form">
+            {{ form.address.label }} :
+            {{ form.address }} <br>
+            <span class="errorMsg"></span>
+        </p>
+
+        <p class="form">
+            {{ form.role.label }} :
+            {{ form.role }} <br>
+            <span class="errorMsg"></span>
+        </p>
+
+        <p class="formSubmit">
+            {{ form.submit() }}
+        </p>
+    </form>
+{% endblock %}

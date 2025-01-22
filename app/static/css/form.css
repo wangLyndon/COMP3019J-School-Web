@@ -1,0 +1,41 @@
+/* set form style */
+
+.formTitle {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.form,
+.formSubmit {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.form input,
+.form textarea{
+    padding: 5px;
+    border-radius: 20px;
+    outline: none;
+}
+
+.form.error input{
+    border: red solid 1px;
+}
+
+.form select{
+    width: 200px;
+    padding: 5px;
+    border-radius: 20px;
+    outline: none;
+}
+
+.form textarea{
+    resize: none;
+    width: 400px;
+    height: 400px;
+}
+
+.formSubmit input {
+    padding: 5px 20px;
+    border-radius: 20px;
+}

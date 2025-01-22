@@ -1,0 +1,42 @@
+{% extends "main/base.html" %}
+{% block title %}
+    Modules
+{% endblock %}
+
+{% block content %}
+    <h2 class="pageTitle">Modules: </h2>
+
+
+    <ul class="pageList">
+        {% for module in modules %}
+
+            <li class="adminView">
+                <div class="viewTitle">
+                    <a href="{{ url_for("main.module", moduleId=module.id) }}">{{ module.moduleName }}</a>
+                </div>
+                <div class="viewEdit">
+                    <a href="{{ url_for("admin.editModule", moduleId=module.id) }}">Edit</a>
+                </div>
+                <div class="viewDel">
+                    <div class="module" data-id="{{ module.id }}">
+                        Delete
+                    </div>
+                </div>
+            </li>
+
+        {% endfor %}
+    </ul>
+
+    <div class="page">
+
+        {#  Paging   #}
+
+        {% if currentPageModules.has_prev %}
+            <a href="{{ url_for("admin.modules", page=currentPageModules.prev_num) }}" class="prev">Prev</a>
+        {% endif %}
+        <span>Current page: {{ currentPageModules.page }}</span>
+        {% if currentPageModules.has_next %}
+            <a href="{{ url_for("admin.modules", page=currentPageModules.next_num) }}" class="next">Next</a>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "main/base.html" %}
+{% block title %}
+    Create Module
+{% endblock %}
+
+{% block content %}
+    <h2 class="formTitle">Create Module</h2>
+    <form method="post">
+
+        {{ form.hidden_tag() }}
+
+        <p class="form">
+            {{ form.moduleName.label }} :
+            {{ form.moduleName }} <br>
+            <span class="errorMsg"></span>
+        </p>
+
+        <p class="form">
+            {{ form.schedule.label }} :
+            {{ form.schedule }} <br>
+            <span class="errorMsg"></span>
+        </p>
+
+        <p class="form">
+            {{ form.location.label }} :
+            {{ form.location }} <br>
+            <span class="errorMsg"></span>
+        </p>
+
+        <p class="form">
+            {{ form.officeHours.label }} :
+            {{ form.officeHours }} <br>
+            <span class="errorMsg"></span>
+        </p>
+
+        <p class="formSubmit">
+            {{ form.submit }}
+        </p>
+
+    </form>
+{% endblock %}

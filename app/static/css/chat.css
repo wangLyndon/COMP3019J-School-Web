@@ -1,0 +1,87 @@
+.chat {
+    position: fixed;
+    bottom: 100px;
+    right: 150px;
+    width: 400px;
+    border-radius: 15px;
+    display: none;
+}
+
+.chat .header {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.logo span {
+    font-size: 40px;
+}
+
+.chat .header .title {
+    margin-left: 10px;
+    font-size: 23px;
+}
+
+.chat .header .close {
+    margin-left: 200px;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.chat .body {
+    display: flex;
+    padding: 10px 15px;
+    height: 400px;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.chat .body .fromBot,
+.chat .body .fromBotThinking {
+    display: flex;
+    margin-top: 10px;
+    width: 250px;
+}
+
+.chat .body .fromUser {
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+    margin-left: 120px;
+    max-width: 250px;
+    word-break: break-all;
+}
+
+.chat .text {
+    padding: 5px;
+    border-radius: 12px;
+}
+
+.chat .footer .textForm {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.chat .footer .textForm textarea {
+    padding: 10px;
+    outline: none;
+    resize: none;
+    border-radius: 10px;
+    width: 330px;
+    height: 50px;
+}
+
+.chat .footer .textForm .send span {
+    margin-left: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.openBot {
+    position: fixed;
+    bottom: 100px;
+    right: 150px;
+    display: block;
+    cursor: pointer;
+}

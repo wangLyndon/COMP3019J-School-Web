@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}
+        School Web
+    {% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for("static", filename="iconfont/iconfont.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/base.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/itemList.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/form.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/itemDetail.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/chat.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/main.css") }}">
+</head>
+<body>
+
+{# To load the theme first #}
+<script src="{{ url_for("static", filename="js/mode.js") }}"></script>
+{# Initial set to light mode #}
+<header>
+
+    <a href="#" class="webTitle"><span>Welcome to school web</span></a>
+
+    <nav>
+        <a href="{{ url_for("main.index") }}">Home</a>
+        <a href="{{ url_for("main.modules") }}">Modules</a>
+        <a href="{{ url_for("main.menus") }}">Menus</a>
+        {#  Add navigation options based on different roles and whether logged in  #}
+        {% if current_user.is_authenticated %}
+
+            {#            Administrators do not need to edit personal information#}
+
+            {% if current_user.role != "admin" %}
+                <a href="{{ url_for("main.profile") }}">Profile</a>
+                <a href="{{ url_for("main.editProfile") }}">Edit Profile</a>
+            {% endif %}
+
+            {% if current_user.role == "teacher" %}
+                <a href="{{ url_for("main.createModule") }}">Create Module</a>
+                <a href="{{ url_for("main.createAnnouncement") }}">Create Announcement</a>
+            {% elif current_user.role == "restaurantStaff" %}
+                <a href="{{ url_for("main.createMenu") }}">Create Menu</a>
+            {% elif current_user.role == "admin" %}
+                <a href="{{ url_for("main.admin") }}">Admin</a>
+            {% endif %}
+            <a href="{{ url_for("auth.logout") }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for("auth.login") }}">Login</a>
+            <a href="{{ url_for("auth.register") }}">Register</a>
+        {% endif %}
+        <a href="#" class="toggleTheme"><span class="iconfont icon-SUN"></span></a>
+    </nav>
+
+</header>
+
+<div class="info">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    <div class="chat">
+        <div class="header">
+            <div class="logo">
+                <span class="iconfont icon-robot"></span>
+            </div>
+            <div class="title">
+                ChatBot
+            </div>
+            <div class="close">
+                X
+            </div>
+        </div>
+
+        <div class="body">
+            <div class="fromBot">
+                <div class="text">
+                    Hello, what can i help you today?
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <form action="#" class="textForm">
+                <textarea placeholder="Message..."></textarea>
+                <div class="send"><span class="iconfont icon-Send"></span></div>
+            </form>
+        </div>
+    </div>
+
+    <div class="openBot">
+        <div class="logo">
+            <span class="iconfont icon-robot"></span>
+        </div>
+    </div>
+</div>
+
+
+<footer>
+    {# Copyright Information #}
+    <p>&copy;Gruop 12</p>
+
+</footer>
+
+<script src="{{ url_for("static", filename="js/base.js") }}"></script>
+<script src="{{ url_for("static", filename="js/admin.js") }}"></script>
+<script src="{{ url_for("static", filename="js/chat.js") }}"></script>
+<script src="{{ url_for("static", filename="js/main.js") }}"></script>
+<script src="{{ url_for("static", filename="js/register.js") }}"></script>
+<script src="{{ url_for("static", filename="js/editProfile.js") }}"></script>
+<script src="{{ url_for("static", filename="js/removeOption.js") }}"></script>
+<script src="{{ url_for("static", filename="js/editModule.js") }}"></script>
+<script src="{{ url_for("static", filename="js/updateCardImg.js") }}"></script>
+<script src="{{ url_for("static", filename="js/menuDate.js") }}"></script>
+
+</body>
+</html>

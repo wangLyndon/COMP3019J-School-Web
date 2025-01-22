@@ -1,0 +1,39 @@
+{% extends "main/base.html" %}
+{% block title %}
+    Menus
+{% endblock %}
+
+{% block content %}
+    <h2 class="pageTitle">Menus: </h2>
+    <ul class="pageList">
+
+        {% for menu in menus %}
+            <li class="adminView">
+                <div class="viewTitle">
+                    <a href="{{ url_for("main.menu", menuId=menu.id) }}">{{ menu.date }}</a>
+                </div>
+                <div class="viewEdit">
+                    <a href="{{ url_for("admin.editMenu", menuId=menu.id) }}">Edit</a>
+                </div>
+                <div class="viewDel">
+                    <div class="menu" data-id="{{ menu.id }}">
+                        Delete
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+
+
+    </ul>
+
+    <div class="page">
+        {% if currentPageMenus.has_prev %}
+            <a href="{{ url_for("admin.menus", page=currentPageMenus.prev_num) }}" class="prev">Prev</a>
+        {% endif %}
+        <span>Current page: {{ currentPageMenus.page }}</span>
+        {% if currentPageMenus.has_next %}
+            <a href="{{ url_for("admin.menus", page=currentPageMenus.next_num) }}" class="next">Next</a>
+        {% endif %}
+    </div>
+
+{% endblock %}

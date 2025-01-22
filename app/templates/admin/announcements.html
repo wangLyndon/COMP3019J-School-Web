@@ -1,0 +1,40 @@
+{% extends "main/base.html" %}
+{% block title %}
+    Announcements
+{% endblock %}
+
+{% block content %}
+    {% if announcements %}
+        <h2 class="pageTitle">Announcements: </h2>
+        <ul class="pageList">
+            {% for announcement in announcements %}
+                <li class="adminView">
+                    <div class="viewTitle">
+                        <a href="{{ url_for("main.announcement", announcementId=announcement.id) }}">{{ announcement.title }}</a>
+                    </div>
+                    <div class="viewEdit">
+                        <a href="{{ url_for("admin.editAnnouncement", announcementId=announcement.id) }}">Edit</a>
+                    </div>
+                    <div class="viewDel">
+                        <div class="announcement" data-id="{{ announcement.id }}">
+                            Delete
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+
+        </ul>
+    {% endif %}
+
+    <div class="page">
+
+        {% if currentPageAnnouncements.has_prev %}
+            <a href="{{ url_for("admin.announcements", page=currentPageAnnouncements.prev_num) }}" class="prev">Prev</a>
+        {% endif %}
+        <span>Current page: {{ currentPageAnnouncements.page }}</span>
+        {% if currentPageAnnouncements.has_next %}
+            <a href="{{ url_for("admin.announcements", page=currentPageAnnouncements.next_num) }}" class="next">Next</a>
+        {% endif %}
+
+    </div>
+{% endblock %}

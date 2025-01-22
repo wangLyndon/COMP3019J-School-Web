@@ -1,0 +1,58 @@
+{% extends "main/base.html" %}
+{% block title %}
+    {{ module.moduleName }}
+{% endblock %}
+
+{% block content %}
+    <h2 class="detailTitle">{{ module.moduleName }}</h2>
+
+    {% if module.teacher %}
+        <p class="detailContent">Teacher: {{ module.teacher.user.username }}</p>
+    {% else %}
+        <p class="detailContent">Teacher: No teacher</p>
+    {% endif %}
+
+    <p class="detailContent">Schedule : {{ module.schedule }}</p>
+    <p class="detailContent">Location : {{ module.location }}</p>
+    <p class="detailContent">Office Hours : {{ module.officeHours }}</p>
+
+    <hr>
+
+    {% if module.teacher and current_user.is_authenticated and current_user.role == "student" %}
+
+        {#   Only students can enroll     #}
+
+        <form method="post">
+
+            {{ form.hidden_tag() }}
+
+            <p class="formSubmit">
+                {{ form.submit }}
+            </p>
+        </form>
+    {% endif %}
+
+    {% if current_user.is_authenticated and current_user.role == "teacher" %}
+
+        <p class="detailContent">Student list: </p>
+
+        <ul class="informationDetail">
+
+            {% for student in students %}
+                <li><span>{{ student.student.studentId }}</span>{{ student.student.user.username }}</li>
+            {% endfor %}
+
+        </ul>
+
+        <div class="page">
+            {% if currentPageStudent.has_prev %}
+                <a href="{{ url_for("main.index", page=currentPageStudent.prev_num) }}" class="prev">Prev</a>
+            {% endif %}
+            <span>Current page: {{ currentPageStudent.page }}</span>
+            {% if currentPageStudent.has_next %}
+                <a href="{{ url_for("main.index", page=currentPageStudent.next_num) }}" class="next">Next</a>
+            {% endif %}
+        </div>
+
+    {% endif %}
+{% endblock %}

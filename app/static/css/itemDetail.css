@@ -1,0 +1,88 @@
+/* set the details page style */
+
+.detailTitle{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.detailDate{
+    margin-top: 20px;
+    text-align: right;
+    font-size: 18px;
+}
+
+.detailContent{
+    padding: 0 150px;
+    margin-top: 30px;
+    word-break: break-all;
+}
+
+.reviewHeader{
+    display: flex;
+    align-items: center;
+}
+
+.reviewHeader .reviewUsername{
+    font-size: 20px;
+}
+
+.reviewHeader .reviewDate{
+    margin-left: 50px;
+}
+
+.reviewRating{
+    margin-top: 10px;
+}
+
+.reviewContent{
+    margin: 10px 0 30px;
+    word-break: break-all;
+}
+
+.informationDetail{
+    display: flex;
+    margin-top: 50px;
+    padding: 0 200px;
+    justify-content: space-between;
+}
+
+.informationDetail li{
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.informationDetail li span{
+    margin-right: 20px;
+}
+
+.informationDetail{
+    display: flex;
+    margin-top: 50px;
+    padding: 0 200px;
+    justify-content: space-between;
+}
+
+.informationDetail li{
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.informationDetail li span{
+    margin-right: 20px;
+}
+
+.userOptions{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.userOptions .deleteUser{
+    cursor: pointer;
+}
+
+.userOptions .deleteUser:hover{
+    color: #FFA550;
+}

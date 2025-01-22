@@ -1,0 +1,88 @@
+{% extends "main/base.html" %}
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+
+    <div class="slide">
+
+        <img src="../../static/images/bg1.png" alt="background picture">
+        <div class="prev">
+            &lt;
+        </div>
+        <div class="next">
+            &gt;
+        </div>
+
+    </div>
+
+    {% if announcements %}
+        <div class="announcementList">
+            <h2 class="pageTitle">Announcements: </h2>
+            <ul class="pageList">
+                {% for announcement in announcements %}
+                    <li class="annItem">
+                        <a href="{{ url_for("main.announcement", announcementId=announcement.id) }}">{{ announcement.title }}</a>
+                    </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    {% endif %}
+
+    <div class="page">
+
+        {% if currentPageAnnouncements.has_prev %}
+            <a href="{{ url_for("main.index", page=currentPageAnnouncements.prev_num) }}" class="prev">Prev</a>
+        {% endif %}
+        <span>Current page: {{ currentPageAnnouncements.page }}</span>
+        {% if currentPageAnnouncements.has_next %}
+            <a href="{{ url_for("main.index", page=currentPageAnnouncements.next_num) }}" class="next">Next</a>
+        {% endif %}
+
+    </div>
+
+    <hr>
+
+    <h2 class="pageTitle">About us: </h2>
+
+    <div class="about">
+        <div class="person">
+            <div class="photo">
+                <img src="../../static/images/shz.png">
+                <div class="personName">
+                    Haozhe Sun
+                </div>
+            </div>
+            <div class="intro">
+                Responsible for UI design and administrator parts
+            </div>
+        </div>
+
+        <div class="person">
+            <div class="intro">
+                Responsible for backend routing design and beautification of the interface
+            </div>
+            <div class="photo">
+                <img src="../../static/images/ysc.png">
+                <div class="personName">
+                    Sicheng Yi
+                </div>
+            </div>
+        </div>
+
+        <div class="person">
+            <div class="photo">
+                <img src="../../static/images/wzh.png">
+                <div class="personName">
+                    Ziheng Wang
+                </div>
+            </div>
+            <div class="intro">
+                Responsible for some basic function implementation and AJAX interaction
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

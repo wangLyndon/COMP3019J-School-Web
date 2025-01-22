@@ -1,0 +1,64 @@
+{% extends "main/base.html" %}
+{% block title %}
+    {{ menu.date }}
+{% endblock %}
+
+{% block content %}
+    <h2 class="detailTitle">Menu information</h2>
+    <p class="detailContent">Breakfast: {{ menu.breakfast }}</p>
+    <p class="detailContent">Lunch: {{ menu.lunch }}</p>
+    <p class="detailContent">Dinner: {{ menu.dinner }}</p>
+
+    <hr>
+
+    <h2 class="detailTitle">Make Review: </h2>
+    {% if current_user.is_authenticated and current_user.role in ["student", "teacher"] %}
+
+{#   Only students and teachers can review     #}
+
+        <form method="post">
+
+            {{ form.hidden_tag() }}
+
+            <p class="form">
+                {{ form.rating.label }}
+                <br>
+                {{ form.rating }}
+                <span class="errorMsg"></span>
+            </p>
+
+            <p class="form">
+                {{ form.reviewContent.label }}
+                <br>
+                {{ form.reviewContent }}
+                <span class="errorMsg"></span>
+            </p>
+
+            <p class="formSubmit">
+                {{ form.submit }}
+            </p>
+
+        </form>
+    {% else %}
+        <p class="detailContent">Only student and teacher can review</p>
+    {% endif %}
+
+    <hr>
+
+    <h2 class="detailTitle">Reviews: </h2>
+    <ul >
+
+        {% for review in reviews %}
+            <li>
+
+            <div class="reviewHeader"><div class="reviewUsername">{{ review.user.username }}:</div> <div class="reviewDate">at {{ review.createTime }}</div></div>
+            <div class="reviewRating">Rating: {{ review.rating }}</div>
+            <div class="reviewContent">Content: {{ review.reviewContent }}</div>
+
+            </li>
+        {% endfor %}
+
+    </ul>
+
+
+{% endblock %}

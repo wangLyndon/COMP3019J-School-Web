@@ -1,0 +1,82 @@
+{% extends "main/base.html" %}
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block content %}
+    <h2 class="detailTitle">Profile information</h2>
+    <p class="detailContent">Username: {{ user.username }}</p>
+    <p class="detailContent">Email: {{ user.email }}</p>
+    <p class="detailContent">Phone number: {{ user.phoneNumber }}</p>
+    <p class="detailContent">Address: {{ user.address }}</p>
+
+    {% if user.role == "student" %}
+        <p class="detailContent">Student id: {{ user.student.studentId }}</p>
+        <p class="detailContent">Dorm building: {{ user.student.dormBuilding }}</p>
+        <p class="detailContent">Dorm room: {{ user.student.dormRoom }}</p>
+
+        <hr>
+
+        <h2 class="detailTitle">Your Modules: </h2>
+        <ul class="pageList">
+            {% for enrollment in user.student.modules %}
+                <li>
+                    <a href="{{ url_for("main.module", moduleId=enrollment.module.id) }}">{{ enrollment.module.moduleName }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% elif user.role == "teacher" %}
+        <p class="detailContent">Teacher id: {{ user.teacher.teacherId }}</p>
+        <p class="detailContent">Office location{{ user.teacher.officeLocation }}</p>
+
+        <hr>
+
+        <h2 class="detailTitle">Modules</h2>
+        <ul class="pageList">
+            {% for module in user.teacher.modules %}
+                <li><a href="{{ url_for("main.module", moduleId=module.id) }}">{{ module.moduleName }}</a></li>
+            {% endfor %}
+        </ul>
+    {% elif user.role == "restaurantStaff" %}
+        <p class="detailContent">Schedule time: {{ user.restaurantStaff.workSchedule }}</p>
+    {% endif %}
+
+    {% if user.role == "student" or user.role == "teacher" %}
+
+        <hr>
+
+        <h2 class="detailTitle">Your Reviews: </h2>
+        <ul class="pageList">
+
+            {% for review in user.menuReviews %}
+                <li>
+
+                    <div class="reviewOption">
+                        <div class="profileReview">
+                            <div class="reviewRating">Rating: {{ review.rating }}</div>
+                            <div class="reviewContent">Content: {{ review.reviewContent }}</div>
+                        </div>
+                        <div class="delReview" data-id="{{ review.id }}">
+                            Delete
+                        </div>
+                    </div>
+
+                </li>
+            {% endfor %}
+
+        </ul>
+
+    {% endif %}
+
+    <hr>
+
+    <div class="userOptions">
+        <div>
+            <a href="{{ url_for("main.changePassword") }}">Change password</a>
+        </div>
+        <div class="deleteUser">
+            Delete Account
+        </div>
+    </div>
+
+{% endblock %}

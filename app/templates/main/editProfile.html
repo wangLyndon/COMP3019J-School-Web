@@ -1,0 +1,65 @@
+{% extends "main/base.html" %}
+{% block title %}
+    Edit Profile
+{% endblock %}
+
+{% block content %}
+    <h2 class="formTitle">Edit your profile</h2>
+    <form method="post" id="userEditSubmit">
+
+        {{ form.hidden_tag() }}
+        <p class="form">
+            {{ form.email.label }} :
+            {{ form.email(id = "userEditEmail") }} <br>
+            <span class="errorMsg" id="errorEserEditEmail"></span>
+        </p>
+        <p class="form">
+            {{ form.phoneNumber.label }} :
+            {{ form.phoneNumber(id = "userEditPhone") }} <br>
+            <span class="errorMsg" id="errorEserEditPhone"></span>
+        </p>
+        <p class="form">
+            {{ form.address.label }} :
+            {{ form.address }} <br>
+            <span class="errorMsg"></span>
+        </p>
+
+        {% if current_user.role == "student" %}
+            <p class="form">
+                {{ form.studentId.label }} :
+                {{ form.studentId(id = "userEditStudentId") }} <br>
+                <span class="errorMsg" id="errorUserEditStudentId"></span>
+            </p>
+            <p class="form">
+                {{ form.dormBuilding.label }} :
+                {{ form.dormBuilding }} <br>
+                <span class="errorMsg"></span>
+            </p>
+            <p class="form">
+                {{ form.dormRoom.label }} :
+                {{ form.dormRoom }} <br>
+                <span class="errorMsg"></span>
+            </p>
+        {% elif current_user.role == "teacher" %}
+            <p class="form">
+                {{ form.teacherId.label }} :
+                {{ form.teacherId(id = "userEditTeacherId") }} <br>
+                <span class="errorMsg" id="errorUserEditTeacherId"></span>
+            </p>
+            <p class="form">
+                {{ form.officeLocation.label }} :
+                {{ form.officeLocation }} <br>
+                <span class="errorMsg"></span>
+            </p>
+        {% elif current_user.role == "restaurantStaff" %}
+            <p class="form">
+                {{ form.workSchedule.label }} :
+                {{ form.workSchedule }} <br>
+                <span class="errorMsg"></span>
+            </p>
+        {% endif %}
+        <p class="formSubmit">
+            {{ form.submit() }}
+        </p>
+    </form>
+{% endblock %}

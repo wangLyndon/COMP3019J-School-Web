@@ -1,0 +1,74 @@
+{% extends "main/base.html" %}
+{% block title %}
+    Admin
+{% endblock %}
+
+{% block content %}
+    <h2>Admin</h2>
+
+    <div class="adminOption">
+
+        <div class="card">
+            <a href="{{ url_for("admin.announcements") }}">View announcements</a>
+        </div>
+
+        <div class="card">
+            <a href="{{ url_for("admin.menus") }}">View menus</a>
+        </div>
+
+        <div class="card">
+            <a href="{{ url_for("admin.modules") }}">View modules</a>
+        </div>
+
+        <div class="card">
+            <a href="{{ url_for("admin.users") }}">View users</a>
+        </div>
+
+    </div>
+
+
+    <hr>
+
+
+    <h2>Log parts</h2>
+
+
+    <div class="adminOption">
+
+        <div class="card">
+            <a href="{{ url_for("admin.accountLog") }}">Account Log</a>
+        </div>
+
+        <div class="card">
+            <a href="{{ url_for("admin.announcementLog") }}">Announcement Log</a>
+        </div>
+
+        <div class="card">
+            <a href="{{ url_for("admin.errorLog") }}">Error Log</a>
+        </div>
+
+        <div class="card">
+            <a href="{{ url_for("admin.loginLog") }}">Login Log</a>
+        </div>
+
+    </div>
+
+    <hr>
+
+        <div class="adminOption">
+
+        <div class="card">
+            <a href="{{ url_for("admin.menuLog") }}">Menu Log</a>
+        </div>
+
+        <div class="card">
+            <a href="{{ url_for("admin.moduleLog") }}">Module Log</a>
+        </div>
+
+        <div class="card">
+            <a href="{{ url_for("admin.registerLog") }}">Register Log</a>
+        </div>
+
+    </div>
+
+{% endblock %}

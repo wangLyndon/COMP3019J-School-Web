@@ -1,0 +1,43 @@
+{% extends "main/base.html" %}
+{% block title %}
+    Menus
+{% endblock %}
+
+{% block content %}
+    <h2 class="pageTitle">Menus: </h2>
+
+    <hr>
+
+    <ul class="pageItem">
+
+        {% for menu in menus %}
+            <li>
+
+                <a href="{{ url_for("main.menu", menuId=menu.id) }}">
+                    <div class="cardWithImg">
+                        <div class="menuWithImg">
+                            <img src="../../static/images/moduleImg.jpg" alt="">
+                            <div class="moduleName">
+                                {{ menu.date }}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+            </li>
+        {% endfor %}
+
+
+    </ul>
+
+    <div class="page">
+        {% if currentPageMenus.has_prev %}
+            <a href="{{ url_for("main.menus", page=currentPageMenus.prev_num) }}" class="prev">Prev</a>
+        {% endif %}
+        <span>Current page: {{ currentPageMenus.page }}</span>
+        {% if currentPageMenus.has_next %}
+            <a href="{{ url_for("main.menus", page=currentPageMenus.next_num) }}" class="next">Next</a>
+        {% endif %}
+    </div>
+
+{% endblock %}

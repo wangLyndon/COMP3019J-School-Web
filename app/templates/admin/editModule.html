@@ -1,0 +1,47 @@
+{% extends "main/base.html" %}
+{% block title %}
+    Edit Module
+{% endblock %}
+
+{% block content %}
+    <h2 class="formTitle">Edit Module</h2>
+    <form method="post" id="adminEditModuleSubmit">
+
+        {{ form.hidden_tag() }}
+
+        <p class="form">
+            {{ form.teacher.label }} :
+            {{ form.teacher(id = "adminEditTeacherId") }} <br>
+            <span class="errorMsg" id="errorAdminEditTeacherId"></span>
+        </p>
+
+        <p class="form">
+            {{ form.moduleName.label }} :
+            {{ form.moduleName }} <br>
+            <span class="errorMsg"></span>
+        </p>
+
+        <p class="form">
+            {{ form.schedule.label }} :
+            {{ form.schedule }} <br>
+            <span class="errorMsg"></span>
+        </p>
+
+        <p class="form">
+            {{ form.location.label }} :
+            {{ form.location }} <br>
+            <span class="errorMsg"></span>
+        </p>
+
+        <p class="form">
+            {{ form.officeHours.label }} :
+            {{ form.officeHours }} <br>
+            <span class="errorMsg"></span>
+        </p>
+
+        <p class="formSubmit">
+            {{ form.submit }}
+        </p>
+
+    </form>
+{% endblock %}

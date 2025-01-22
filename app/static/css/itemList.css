@@ -1,0 +1,123 @@
+/* set the list page style */
+
+.pageTitle {
+    text-align: center;
+    margin-top: 50px;
+    word-break: break-all;
+}
+
+.pageList {
+    padding: 20px 100px;
+    word-break: break-all;
+}
+
+.pageList li {
+    font-size: 22px;
+    margin-bottom: 50px;
+}
+
+.pageList .reviewOption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pageList .reviewOption .delReview {
+    background-color: #FA8072;
+    cursor: pointer;
+}
+
+.pageItem {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    /*height: 200px;*/
+}
+
+.page {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.page .prev {
+    margin-right: 15px;
+}
+
+.page .next {
+    margin-left: 15px;
+}
+
+.adminOption {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+}
+
+.card {
+    width: 200px;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    transition: box-shadow 0.3s;
+}
+
+.cardWithImg {
+    width: 220px;
+    height: 280px;
+    text-align: center;
+    margin-top: 20px;
+    transition: box-shadow 0.3s;
+}
+
+.cardWithImg img{
+    width: 218px;
+    height: 218px;
+}
+
+.cardWithImg .moduleName{
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.cardWithImg:hover{
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.adminView {
+    display: flex;
+}
+
+.viewTitle {
+    width: 680px;
+}
+
+.viewTitle .userInfo {
+    width: 100%;
+    display: flex;
+}
+
+.viewTitle .userInfo span {
+    margin-right: 30px;
+}
+
+.viewEdit {
+    margin-right: 20px;
+    background-color: #90EE90;
+}
+
+.viewDel {
+    background-color: #FA8072;
+    cursor: pointer;
+}
+
+.announcementList {
+    margin-top: 20px;
+    border: #333 solid 1px;
+    border-radius: 15px;
+}
+
